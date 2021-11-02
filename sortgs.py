@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from time import sleep
 import warnings
+import random
 
 # Solve conflict between raw_input and input on Python 2 and Python 3
 import sys
@@ -213,6 +214,8 @@ def main():
         #    url=GSCHOLAR_URL_YEAR.format(str(n), keyword.replace(' ','+'), start_year=start_year, end_year=end_year)
 
         print("Loading next {} results".format(n+10))
+        randtime=random.randint(2,5) #set the range for delay beetween pages to random seconds to avoid being caught.
+        time.sleep(randtime)
         page = session.get(url)#, headers=headers)
         c = page.content
         if any(kw in c.decode('ISO-8859-1') for kw in ROBOT_KW):
